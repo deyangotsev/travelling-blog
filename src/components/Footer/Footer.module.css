@@ -1,0 +1,14 @@
+.lastpiece {
+  background: rgba(0, 17, 54, 0.85);
+  color: white;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+@media all and (max-width: 600px) {
+  .lastpiece {
+    width: 100%;
+  }
+}

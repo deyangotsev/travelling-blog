@@ -1,0 +1,42 @@
+.navigation {
+  width: 100%;
+  height: 7vh;
+  
+  background: rgba(0, 17, 54, 0.85);
+
+  color: white;
+  margin: 0;
+}
+.navigation ul {
+  display: flex;
+  justify-content: space-between;
+  display: flex;
+  padding: 15px;
+}
+.listItems {
+  list-style: none;
+  display: flex;
+}
+.navigation a {
+  text-decoration: none;
+  color: white;
+  padding: 0 10px;
+}
+.logo {
+  height: 7vh;
+  opacity: 1;
+  list-style: none;
+  background-color: white;
+  border-radius: 50%;
+  border: none;
+  margin-left: -25px;
+  margin-top: -15px;
+}
+@media all and (max-width: 600px) {
+  .navigation {
+    width: 100%;
+  }
+  .listItems {
+    margin-left: -6rem;
+  }
+}
