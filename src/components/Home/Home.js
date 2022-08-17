@@ -10,10 +10,13 @@ const Home = () => {
 
             <div className={style.textContainer}>
                 <h1 className="animate__animated animate__fadeInUp">
-                    Welcome to our travelling blog
+                    Welcome to our travelling blog!
                 </h1>
                 <p className="animate__animated animate__fadeInUp">
-                    Here you will find tourist spots that you should visit and also add your own!
+                    Here you will find suggestions for tourist attractions to visit when you travel.
+                </p>
+                <p className="animate__animated animate__fadeInUp" style={{textAlign: 'center'}}>  
+                    You can also add your own!
                 </p>
             </div>
 
