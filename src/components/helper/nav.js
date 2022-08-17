@@ -5,6 +5,12 @@ function getNavigation(isLoggedIn, appUser) {
             title: 'All Places',
             link: '/places'
         },
+
+        {
+            title: 'My Places',
+            link: '/my-places'
+        },
+        
         {
             title: 'Add Place',
             link: '/create'

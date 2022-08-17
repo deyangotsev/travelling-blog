@@ -1,4 +1,3 @@
-import style from "./index.module.css";
 import { Link } from 'react-router-dom'
 import photo from '../images/error-page.jpg'
 const ErrorPage = () => {

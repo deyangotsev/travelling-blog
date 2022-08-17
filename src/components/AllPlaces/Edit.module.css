@@ -1,0 +1,91 @@
+.formWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     
+    }
+    .loginBox{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,.5);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0,0,0,.6);
+      border-radius: 10px;
+    }
+    .title {
+      margin: 0 0 4rem;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+      font-size: 20px;
+      bottom: 2rem;
+    }
+    .placeBox, .imageUrlBox, .descriptionBox{
+      position: relative;
+    }
+    .placeBox label, .imageUrlBox label, .descriptionBox label{
+      position: absolute;
+      top:-2rem;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: .5s;
+    }
+    
+    .addInput{
+      width: 100%;
+      padding:  0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
+    .descriptionBox .addInput{
+      height: 20vh;
+    }
+    .editBtn{
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #722364;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: .5s;
+      margin-top: 40px;
+      letter-spacing: 2px;
+      left: 7rem;
+      border-radius: 10px;
+    border: none;
+      
+    }
+    .editBtn:hover{
+      background: #722364;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #722364,
+                  0 0 25px #722364,
+                  0 0 50px #722364,
+                  0 0 100px #722364;
+    }
+    @media all and (max-width: 600px) {
+      .loginBox {
+        width: 90%;
+
+      }
+      .editBtn{
+        margin-left: -2.3rem;
+      }
+    }
+    
+ 
