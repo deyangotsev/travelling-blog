@@ -11,7 +11,7 @@
       width: 400px;
       padding: 40px;
       transform: translate(-50%, -50%);
-      background: rgba(0,0,0,.5);
+      background: #001136d9;
       box-sizing: border-box;
       box-shadow: 0 15px 25px rgba(0,0,0,.6);
       border-radius: 10px;
@@ -56,7 +56,7 @@
       position: relative;
       display: inline-block;
       padding: 10px 20px;
-      color: #722364;
+      color: #001136d9;
       font-size: 16px;
       text-decoration: none;
       text-transform: uppercase;
@@ -70,13 +70,13 @@
       
     }
     .editBtn:hover{
-      background: #722364;
+      background: #001136d9;
       color: #fff;
       border-radius: 5px;
-      box-shadow: 0 0 5px #722364,
-                  0 0 25px #722364,
-                  0 0 50px #722364,
-                  0 0 100px #722364;
+      box-shadow: 0 0 5px #001136d9,
+                  0 0 25px #001136d9,
+                  0 0 50px #001136d9,
+                  0 0 100px #001136d9;
     }
     @media all and (max-width: 600px) {
       .loginBox {

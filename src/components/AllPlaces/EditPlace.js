@@ -7,10 +7,9 @@ import photo from "../images/details.jpg";
 import { toast } from "react-toastify";
 
 const EditPlace = (props) => {
+  
   const navigate = useNavigate();
-
   const [place, setPlace] = useState('');
-
   const params = useParams();
 
   async function edit(event) {
