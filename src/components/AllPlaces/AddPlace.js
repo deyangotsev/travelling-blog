@@ -14,28 +14,27 @@ const AddPlace = (props) => {
   const [description, setDescription] = useState('');
 
 
-  async function create(event) { 
+  async function create(event) {
     event.preventDefault();
 
     if (place === '') {
-      toast.success(`You must fill the place's name.`, {
-        type: "error",
+      toast.error(`You must fill the place's name.`, {
         autoClose: 2000,
         position: "top-center",
       })
       return;
     }
-    if (imageUrl == '') {
-      toast.success(`You must add photo of the visited place.`, {
-        type: "error",
+    if (imageUrl === '') {
+      toast.error(`You must add photo of the visited place.`, {
+
         autoClose: 2000,
         position: "top-center",
       })
       return;
     }
     if (description.length < 10) {
-      toast.success(`You must add larger description.`, {
-        type: "error",
+      toast.error(`You must add larger description.`, {
+
         autoClose: 2000,
         position: "top-center",
       })
@@ -45,15 +44,13 @@ const AddPlace = (props) => {
     try {
       await firebase.createPlace(place, imageUrl, description)
       toast.success(`Successfully added new place.`, {
-        type: "success",
         autoClose: 2000,
         position: "top-center",
       })
       navigate('/places');
 
     } catch (error) {
-      toast.success(`${error}`, {
-        type: "error",
+      toast.error(`${error}`, {
         autoClose: 2000,
         position: "top-center",
       })
@@ -78,34 +75,41 @@ const AddPlace = (props) => {
   return (
 
     <>
-      
+
       <div style={{
-        backgroundImage: `url(${photo})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position: 'relative', width: '100%', height: '100vh', color: 'white', 
+        backgroundImage: `url(${photo})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        position: 'relative',
+        width: '100%', height: '100vh',
+        color: 'white',
       }} />
+
+
       <div className={style.loginBox}>
         <h1 className={style.title}>Add Your New Visited Place</h1>
         <article className={style.formWrapper}>
 
           <form >
+
             <div className={style.placeBox} >
               <label htmlFor="place">Place Name</label>
               <input name="place" className={style.addInput} id="place" value={place} onChange={(event) => onChangeHandler(event)} />
             </div>
+
             <div className={style.imageUrlBox}>
               <label htmlFor="imageUrl">Photo</label>
               <input className={style.addInput} name="imageUrl" id="imageUrl" value={imageUrl} onChange={(event) => onChangeHandler(event)} />
             </div>
+
             <div className={style.descriptionBox}>
               <label htmlFor="description">Description</label>
               <textarea className={style.addInput} name="description" value={description} id="description" onChange={(event) => onChangeHandler(event)} />
             </div>
+
             <div>
-              <span className={style.span}></span>
-              <span className={style.span}></span>
-              <span className={style.span}></span>
-              <span className={style.span}></span>
               <button onClick={create} name="button" className={style.addBtn}
-                type="primary" htmlType="submit">
+                htmlType="submit">
                 Create
               </button>
             </div>

@@ -11,7 +11,7 @@ const Details = (props) => {
   const params = useParams();
 
   const navigate = useNavigate()
-  const { isLoggedIn, appUser } = useContext(UserContext);
+  const {  appUser } = useContext(UserContext);
 
   const getData = useCallback(async () => {
     const id = params.placeId;
@@ -54,6 +54,7 @@ const Details = (props) => {
 
   return (
     <>
+
       <div className={style.detailsPage}>
         <h1 className={style.heading}>{place.place}</h1>
         <img className={style.imageUrl} src={place.imageUrl} alt="" />

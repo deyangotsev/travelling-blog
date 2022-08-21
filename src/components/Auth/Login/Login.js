@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import firebase from "../../firebase/config";
 import style from "./Login.module.css";
@@ -11,7 +11,7 @@ const Login = (props) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
+
 
     const onChangeHandler = (event) => {
         const { name, value } = event.currentTarget;
@@ -25,17 +25,17 @@ const Login = (props) => {
 
     async function login(event) {
         event.preventDefault();
+
         try {
             await firebase.login(email, password);
-            toast.success("Successful Login.", {
-                type: "success",
+            toast.success("Successful Login!", {
                 autoClose: 2000,
                 position: "top-center",
             });
             navigate("/places");
+
         } catch (error) {
-            toast.success(`${error}`, {
-                type: "error",
+            toast.error(`${error}`, {
                 autoClose: 2000,
                 position: "top-center",
             });
@@ -57,36 +57,36 @@ const Login = (props) => {
                     opacity: "0.8",
                 }}
             />
+
+
             <form className={style.loginBox}>
                 <legend className={style.title}>Login</legend>
-                <p className={style.placeBox}>
+                <div className={style.placeBox}>
                     <label htmlFor="username">Your Email</label>
-                    <span className="input">
-                        <i className="fas fa-user"></i>
-                        <input
-                            className={style.addInput}
-                            type="email"
-                            name="userEmail"
-                            value={email}
-                            onChange={(event) => onChangeHandler(event)}
-                            id="userEmail"
-                        />
-                    </span>
-                </p>
-                <p className={style.imageUrlBox}>
+
+                    <input
+                        className={style.addInput}
+                        type="email"
+                        name="userEmail"
+                        value={email}
+                        onChange={(event) => onChangeHandler(event)}
+                        id="userEmail"
+                    />
+
+                </div>
+                <div className={style.imageUrlBox}>
                     <label htmlFor="password">Password</label>
-                    <span className="input">
-                        <i className="fas fa-lock"></i>
-                        <input
-                            className={style.addInput}
-                            type="password"
-                            value={password}
-                            onChange={(event) => onChangeHandler(event)}
-                            name="userPassword"
-                            id="userPassword"
-                        />
-                    </span>
-                </p>
+
+                    <input
+                        className={style.addInput}
+                        type="password"
+                        value={password}
+                        onChange={(event) => onChangeHandler(event)}
+                        name="userPassword"
+                        id="userPassword"
+                    />
+
+                </div>
 
                 <Button onClick={login}>Login</Button>
             </form>

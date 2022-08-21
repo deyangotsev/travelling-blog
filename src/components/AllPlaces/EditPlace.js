@@ -1,6 +1,5 @@
 import React, { useState, useCallback, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import UserContext from "../../Context";
 
 import firebase from "../firebase/config";
 import style from "./Edit.module.css";
@@ -19,16 +18,16 @@ const EditPlace = (props) => {
     event.preventDefault();
 
     if (place.place === "") {
-      toast.success(`You must fill the place's name.`, {
-        type: "error",
+      toast.error(`You must fill the place's name.`, {
+       
         autoClose: 2000,
         position: "top-center",
       });
       return;
     }
+
     if (place.imageUrl === "") {
-      toast.success(`You must add photo of the visited place.`, {
-        type: "error",
+      toast.error(`You must add photo of the visited place.`, {
         autoClose: 2000,
         position: "top-center",
       });
@@ -36,8 +35,7 @@ const EditPlace = (props) => {
     }
 
     if (place.description === "") {
-      toast.success(`You must add larger description.`, {
-        type: "error",
+      toast.error(`You must add larger description.`, {
         autoClose: 2000,
         position: "top-center",
       });
@@ -51,15 +49,17 @@ const EditPlace = (props) => {
         place.imageUrl,
         place.description
       );
+
       toast.success(`Successfully edited the place.`, {
-        type: "success",
         autoClose: 2000,
         position: "top-center",
       });
+
       navigate(`/details/${place.id}`);
+
+
     } catch (error) {
-      toast.success(`${error}`, {
-        type: "error",
+      toast.error(`${error}`, {
         autoClose: 2000,
         position: "top-center",
       });
@@ -95,9 +95,12 @@ const EditPlace = (props) => {
       });
   }, [params.placeid, props.navigate]);
 
+
   useEffect(() => {
     getData();
   }, [getData]);
+
+
  
   return (
     <>
@@ -114,11 +117,15 @@ const EditPlace = (props) => {
           opacity: "0.8",
         }}
       />
+
       <div className={style.loginBox}>
+
         <h1 className={style.title}>
           Edit Your Visited Place
         </h1>
+
         <article>
+
           <form>
             <div className={style.placeBox}>
               <label htmlFor="place">Name</label>
@@ -131,6 +138,8 @@ const EditPlace = (props) => {
                 onChange={(event) => onChangeHandler(event)}   
               />
             </div>
+
+
             <div  className={style.imageUrlBox}>
               <label htmlFor="photo">Photo</label>
               <input
@@ -142,6 +151,8 @@ const EditPlace = (props) => {
                 onChange={(event) => onChangeHandler(event)}
               />
             </div>
+
+
             <div  className={style.descriptionBox}>
               <label htmlFor="description">Description</label>
               <textarea
@@ -153,6 +164,8 @@ const EditPlace = (props) => {
                 onChange={(event) => onChangeHandler(event)}
               />
             </div>
+
+
             <div>
               <button
                 className={style.editBtn}
@@ -164,6 +177,8 @@ const EditPlace = (props) => {
                 Edit
               </button>
             </div>
+
+            
           </form>
         </article>
       </div>

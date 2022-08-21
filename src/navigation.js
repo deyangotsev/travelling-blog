@@ -1,7 +1,6 @@
-import { useState, useEffect, useContext } from 'react'
+import {  useContext } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Home from './components/Home/Home'
-import firebase from '../src/components/firebase/config'
 import UserContext from './Context'
 import Places from './components/AllPlaces/Places'
 import Register from './components/Auth/Register/Register'
@@ -16,16 +15,10 @@ import Footer from './components/Footer/Footer'
 import MyPosts from './components/AllPlaces/MyPosts'
 
 const Navigation = (props) => {
-    const [firebaseInitialized, setFirebaseInitialized] = useState(false);
-
-    useEffect(() => {
-        firebase.isInitialized().then(value => {
-            setFirebaseInitialized(value)
-        })
-    })
+    
     const { isLoggedIn } = useContext(UserContext);
 
-    return firebaseInitialized !== false ? (
+    return  (
         <BrowserRouter>
             <Header />
             <Routes>
@@ -58,7 +51,7 @@ const Navigation = (props) => {
             </Routes>
             <Footer />
         </BrowserRouter>
-    ) : <div className='addloader' />
+    )
 }
 
 export default Navigation;

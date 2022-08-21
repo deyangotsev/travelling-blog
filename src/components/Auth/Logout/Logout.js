@@ -17,14 +17,12 @@ const SignOut = () => {
         try {
             await firebase.logout();
             toast.success('Successful Logout.', {
-                type: "success",
                 autoClose: 2000,
                 position: "top-center",
             })
             navigate("/");
         } catch (error) {
-            toast.success(`${error}`, {
-                type: "error",
+            toast.error(`${error}`, {
                 autoClose: 2000,
                 position: "top-center",
             })
@@ -37,16 +35,24 @@ const SignOut = () => {
             <div className={style.logoutWrapper}>
                 <div
                     style={{
-                        backgroundImage: `url(${image})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position: 'relative', width: '100%', height: '100vh', color: 'white',
+                        backgroundImage: `url(${image})`,
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                        position: 'relative',
+                        width: '100%',
+                        height: '100vh',
+                        color: 'white',
                     }} />
-                <legend className={style.logoutHeader}
+
+                <h2 className={style.logoutHeader}
                     style={
                         {
                             animation: 'backInDown',
                             animationDuration: '1s',
                         }
                     }
-                >Are you sure you want to log out?</legend>
+                >Are you sure you want to log out?</h2>
+
 
                 <button
                     className={style.logoutBtn}

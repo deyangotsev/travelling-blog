@@ -30,9 +30,8 @@ const Register = (props) => {
     const signUp = (event) => {
         event.preventDefault();
 
-        if (email === '') {
-            toast.success(`You must add your email.`, {
-                type: "error",
+        if (email === '' || password === '' || rePassword === '') {
+            toast.error(`You need to fill all the fields!`, {
                 autoClose: 2000,
                 position: "top-center",
             });
@@ -40,27 +39,18 @@ const Register = (props) => {
             return;
         }
 
-        if (password === '') {
-            toast.success(`You must insert your password.`, {
-                type: "error",
+        if (password.length < 6) {
+            toast.error(`Password must be at least 6 characters!`, {
                 autoClose: 2000,
                 position: "top-center",
-            })
+            });
+
             return;
         }
 
-        if (rePassword === '') {
-            toast.success(`Please repeat your password.`, {
-                type: "error",
-                autoClose: 2000,
-                position: "top-center",
-            })
-            return;
-        }
 
         if (password !== rePassword) {
-            toast.success(`Password must match!`, {
-                type: "error",
+            toast.error(`Password must match!`, {
                 autoClose: 2000,
                 position: "top-center",
             })
@@ -70,15 +60,13 @@ const Register = (props) => {
             try {
                 firebase.register(email, password);
                 toast.success(`Successful registration.`, {
-                    type: "success",
                     autoClose: 2000,
                     position: "top-center",
                 })
                 navigate("/places")
 
             } catch (error) {
-                toast.success(`${error}`, {
-                    type: "error",
+                toast.error(`${error}`, {
                     autoClose: 2000,
                     position: "top-center",
                 })
@@ -93,53 +81,61 @@ const Register = (props) => {
         <>
 
             <div style={{
-                backgroundImage: `url(${photo})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', position: 'relative', width: '100%', height: '100vh', color: 'white', opacity: '0.8'
+                backgroundImage: `url(${photo})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                position: 'relative',
+                width: '100%',
+                height: '100vh',
+                color: 'white',
+                opacity: '0.8'
             }} />
+
+
+
             <div className={style.loginBox}>
                 <form  >
                     <div className="register-form">
                         <h1 className={style.title}>Register</h1>
-                        <p className={style.placeBox}>
+                        <div className={style.placeBox}>
                             <label htmlFor="username">Email Adress</label>
-                            <span className="input">
-                                <i className="fas fa-user"></i>
-                                <input
-                                    className={style.addInput}
-                                    type="email"
-                                    name="userEmail"
-                                    id="userEmail"
-                                    value={email}
-                                    onChange={(event) => onChangeHandler(event)}
-                                />
-                            </span>
-                        </p>
-                        <p className={style.imageUrlBox}>
+
+                            <input
+                                className={style.addInput}
+                                type="email"
+                                name="userEmail"
+                                id="userEmail"
+                                value={email}
+                                onChange={(event) => onChangeHandler(event)}
+                            />
+
+                        </div>
+                        <div className={style.imageUrlBox}>
                             <label htmlFor="password">Password</label>
-                            <span className="icon">
-                                <i className="fas fa-lock"></i>
-                                <input
-                                    className={style.addInput}
-                                    type="password"
-                                    name="userPassword"
-                                    id="userPassword"
-                                    value={password}
-                                    onChange={(event) => onChangeHandler(event)}
-                                />
-                            </span>
-                        </p>
-                        <p className={style.descriptionBox}>
+
+                            <input
+                                className={style.addInput}
+                                type="password"
+                                name="userPassword"
+                                id="userPassword"
+                                value={password}
+                                onChange={(event) => onChangeHandler(event)}
+                            />
+
+                        </div>
+                        <div className={style.descriptionBox}>
                             <label htmlFor="password"> Repeat Password</label>
-                            <span className="input">
-                                <i className="fas fa-key"></i>
-                                <input className={style.addInput}
-                                    type="password"
-                                    name="rePassword"
-                                    value={rePassword}
-                                    id="rePassword"
-                                    onChange={(event) => onChangeHandler(event)}
-                                />
-                            </span>
-                        </p>
+
+
+                            <input className={style.addInput}
+                                type="password"
+                                name="rePassword"
+                                value={rePassword}
+                                id="rePassword"
+                                onChange={(event) => onChangeHandler(event)}
+                            />
+
+                        </div>
 
                         <Button onClick={signUp}>Register</Button>
 
