@@ -3,16 +3,13 @@ import firebase from "../firebase/config";
 import style from "./Places.module.css";
 import { Link } from "react-router-dom";
 
-
 const Places = () => {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-
     const db = firebase.db;
 
     db.collection("places").onSnapshot((snapshot) => {
-
       setPlaces(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -20,21 +17,18 @@ const Places = () => {
         }))
       );
     });
-
   }, [places]);
-
-
 
   return (
     <>
       <div className={style.placesBackground}>
         <div>
-
-          <div style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-          }}>
-
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+            }}
+          >
             {places.map(({ id, place }) => {
               return (
                 <Link
@@ -49,13 +43,9 @@ const Places = () => {
                 </Link>
               );
             })}
-            
           </div>
-
         </div>
-
       </div>
-
     </>
   );
 };

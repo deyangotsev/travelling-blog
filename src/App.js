@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
-import firebase from './components/firebase/config'
-import UserContext from './Context'
-import './App.css'
-
+import { useState, useEffect } from "react";
+import firebase from "./components/firebase/config";
+import UserContext from "./Context";
+import "./App.css";
 
 const App = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -11,12 +10,12 @@ const App = (props) => {
   const login = (user) => {
     setIsLoggedIn(true);
     setUser(user);
-  }
+  };
 
   const logout = () => {
     setIsLoggedIn(false);
-    setUser('');
-  }
+    setUser("");
+  };
 
   useEffect(() => {
     firebase.auth.onAuthStateChanged(function (user) {
@@ -25,14 +24,14 @@ const App = (props) => {
       } else {
         logout();
       }
-    })
-  })
+    });
+  });
 
   return (
     <UserContext.Provider value={{ isLoggedIn, appUser, logout: logout }}>
       {props.children}
     </UserContext.Provider>
   );
-}
+};
 
 export default App;

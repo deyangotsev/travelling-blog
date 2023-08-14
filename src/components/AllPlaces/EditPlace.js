@@ -7,18 +7,15 @@ import photo from "../images/details.jpg";
 import { toast } from "react-toastify";
 
 const EditPlace = (props) => {
-  
   const navigate = useNavigate();
-  const [place, setPlace] = useState('');
+  const [place, setPlace] = useState("");
   const params = useParams();
 
   async function edit(event) {
-
     event.preventDefault();
 
     if (place.place === "") {
       toast.error(`You must fill the place's name.`, {
-       
         autoClose: 2000,
         position: "top-center",
       });
@@ -55,8 +52,6 @@ const EditPlace = (props) => {
       });
 
       navigate(`/details/${place.id}`);
-
-
     } catch (error) {
       toast.error(`${error}`, {
         autoClose: 2000,
@@ -94,16 +89,12 @@ const EditPlace = (props) => {
       });
   }, [params.placeid, props.navigate]);
 
-
   useEffect(() => {
     getData();
   }, [getData]);
 
-
- 
   return (
     <>
-      
       <div
         style={{
           backgroundImage: `url(${photo})`,
@@ -118,13 +109,9 @@ const EditPlace = (props) => {
       />
 
       <div className={style.loginBox}>
-
-        <h1 className={style.title}>
-          Edit Your Visited Place
-        </h1>
+        <h1 className={style.title}>Edit Your Visited Place</h1>
 
         <article>
-
           <form>
             <div className={style.placeBox}>
               <label htmlFor="place">Name</label>
@@ -134,12 +121,11 @@ const EditPlace = (props) => {
                 name="place"
                 type="text"
                 value={place.place}
-                onChange={(event) => onChangeHandler(event)}   
+                onChange={(event) => onChangeHandler(event)}
               />
             </div>
 
-
-            <div  className={style.imageUrlBox}>
+            <div className={style.imageUrlBox}>
               <label htmlFor="photo">Photo</label>
               <input
                 className={style.addInput}
@@ -151,8 +137,7 @@ const EditPlace = (props) => {
               />
             </div>
 
-
-            <div  className={style.descriptionBox}>
+            <div className={style.descriptionBox}>
               <label htmlFor="description">Description</label>
               <textarea
                 className={style.addInput}
@@ -164,11 +149,10 @@ const EditPlace = (props) => {
               />
             </div>
 
-
             <div>
               <button
                 className={style.editBtn}
-                onClick={edit} 
+                onClick={edit}
                 name="button"
                 type="primary"
                 htmlType="submit"
@@ -176,12 +160,9 @@ const EditPlace = (props) => {
                 Edit
               </button>
             </div>
-
-            
           </form>
         </article>
       </div>
-     
     </>
   );
 };
